@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import IndexView
+from .views import PacienteCreate, ConsultaCreate
 
 urlpatterns = [
-    #path('', IndexView.as_view(), name="inicio"),
+    path('cadastrar/paciente', PacienteCreate.as_view(), name="cadastrar-paciente"),
+    path('cadastrar/consulta', ConsultaCreate.as_view(), name="cadastrar-consulta"),
 ]
