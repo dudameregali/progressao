@@ -15,7 +15,7 @@ class Consulta(models.Model):
     hospital = models.CharField(max_length=50)
     paciente = models.ForeignKey(Paciente, on_delete=models.PROTECT)
     acompanhante = models.BooleanField()
-    observacao = models.CharField(max_length=255)
+    observacao = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
         return "{} - {}".format(self.paciente.nome, self.dataConsulta)
