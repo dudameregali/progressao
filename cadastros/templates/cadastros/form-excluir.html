@@ -1,17 +1,12 @@
-{% load static %}
+{% extends 'modelo.html' %}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Excluir registros</title>
-    <meta charset=UTF-8"">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-  </head>
+{% block titulo %}
+    <title>Excluir Registro</title>
+{% endblock %}
 
-  <body>
-    <div class="card">
-      <form action="" method="POST">
+{% block conteudo %}
+    <h1> Página inicial</h1>
+    <form action="" method="POST">
         
         <p>Deseja excluir o registro {{ object }} </p>
         
@@ -20,7 +15,4 @@
 
         <button type="submit">Excluir</button>
       </form>
-    </div>
-  </body>
-  
-</html>
+{% endblock %}

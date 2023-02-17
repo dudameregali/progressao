@@ -2,6 +2,7 @@ from django.urls import path
 from .views import PacienteCreate, ConsultaCreate
 from .views import PacienteUpdate, ConsultaUpdate
 from .views import PacienteDelete, ConsultaDelete
+from .views import PacienteList, ConsultaList
 
 urlpatterns = [
     path('cadastrar/paciente', PacienteCreate.as_view(), name="cadastrar-paciente"),
@@ -12,4 +13,7 @@ urlpatterns = [
 
     path('excluir/paciente/<int:pk>', PacienteDelete.as_view(), name="excluir-paciente"),
     path('excluir/consulta/<int:pk>', ConsultaDelete.as_view(), name="excluir-consulta"),
+
+    path('listar/paciente', PacienteList.as_view(), name="listar-paciente"),
+    path('listar/consulta', ConsultaList.as_view(), name="listar-consulta"),
 ]

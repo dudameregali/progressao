@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset=UTF-8"">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+        
+        {% block titulo %}
+        <title>Modelo</title>
+        {% endblock %}
+        
+    </head>
+
+    <bory>
+
+        {% block menu %}
+
+        <!-- Botão que minimiza o menu lateral -->
+        <button class="openbtn" onclick="openNav()">☰ Menu</button>
+
+        <!-- Menu na lateral esquerda da página -->
+        <div class="sidenav" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Consultas do Dia</a>
+            <a href="{% url 'cadastrar-paciente' %}">Cadastrar Paciente</a>
+            <a href="{% url 'cadastrar-consulta' %}">Cadastrar Consulta</a>
+            <a href="{% url 'listar-paciente' %}">Ver todos os Pacientes</a>
+            <a href="{% url 'listar-consulta' %}">Ver todas as Consultas</a>
+        </div>
+
+        <!-- Script para abrir e fechar o menu lateral -->
+        <script src="{% static 'js/menu.js' %}"></script>
+
+        {% endblock %}
+
+        
+        <!-- Conteúdo principal da página -->
+        <div class="main">
+        {% block conteudo %}
+            <h2>Minha Página</h2>
+            <p>Este é o conteúdo principal da minha página.</p>
+        {% endblock %}
+        </div>
+        
+        
+
+    </bory>
+</html>
