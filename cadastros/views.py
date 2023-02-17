@@ -5,15 +5,19 @@ from .models import Paciente, Consulta
 
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 #### Inclusão ####
 
-class PacienteCreate(CreateView):
+class PacienteCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Paciente
     fields = ['nome', 'dataNascimento']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-paciente')
 
-class ConsultaCreate(CreateView):
+class ConsultaCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Consulta
     fields = ['dataConsulta', 'horarioConsulta', 'hospital', 'paciente', 'acompanhante', 'observacao']
     template_name = 'cadastros/form.html'
@@ -21,13 +25,15 @@ class ConsultaCreate(CreateView):
 
 #### Alteração ####
 
-class PacienteUpdate(UpdateView):
+class PacienteUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = Paciente
     fields = ['nome', 'dataNascimento']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-paciente')
 
-class ConsultaUpdate(UpdateView):
+class ConsultaUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = Consulta
     fields = ['dataConsulta', 'horarioConsulta', 'hospital', 'paciente', 'acompanhante', 'observacao']
     template_name = 'cadastros/form.html'
@@ -35,22 +41,26 @@ class ConsultaUpdate(UpdateView):
 
 #### Apagar ####
 
-class PacienteDelete(DeleteView):
+class PacienteDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
     model = Paciente
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-paciente')
 
-class ConsultaDelete(DeleteView):
+class ConsultaDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
     model = Consulta
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-consulta')
 
 #### Listar ####
 
-class PacienteList(ListView):
+class PacienteList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
     model = Paciente
     template_name = 'cadastros/listas/paciente.html'
 
-class ConsultaList(ListView):
+class ConsultaList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
     model = Consulta
     template_name = 'cadastros/listas/consulta.html'
